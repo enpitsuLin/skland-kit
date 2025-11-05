@@ -1,7 +1,20 @@
 import type { FetchOptions } from 'ofetch'
-import type { HypergrayphonResponse, Hypergryph } from '../../types'
+import type { HypergrayphonResponse, HypergrayphonSuccessResponse, Hypergryph } from '../../types'
 import defu from 'defu'
 import { useClientContext } from '../ctx'
+
+function isSuccessResponse(res: HypergrayphonResponse): res is HypergrayphonSuccessResponse {
+  if (typeof res.data === 'undefined'
+    || typeof res.status === 'undefined'
+    || typeof res.type === 'undefined'
+  ) {
+    return false
+  }
+
+  if (res.msg !== 'OK' || res.status !== 0) return false
+
+  return true
+}
 
 export function buildHypergryphCollection(): Hypergryph {
   const { $fetch } = useClientContext()
@@ -14,15 +27,14 @@ export function buildHypergryphCollection(): Hypergryph {
     url: string,
     options: FetchOptions<'json'>,
     errorMessage: string,
-  ): Promise<HypergrayphonResponse<T>> {
+  ): Promise<HypergrayphonSuccessResponse<T>> {
     const res = await $fetchHypergryph<HypergrayphonResponse<T>>(url, {
       ...options,
       onResponseError(ctx) {
         throw new Error(`【skland-kit】${errorMessage}`, { cause: ctx.response._data })
       },
     })
-
-    if (res.status !== '0') {
+    if (!isSuccessResponse(res)) {
       throw new Error(`【skland-kit】${errorMessage}`, { cause: res })
     }
 
