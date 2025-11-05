@@ -25,7 +25,7 @@ export function createClient(config: ClientConfig = {}): Client {
   })
 
   async function signIn(authorizeCode: string) {
-    const did = await getDid()
+    const did = await getDid(storage)
     const data = await $fetch<SklandResponse<{ cred: string, userId: string, token: string }>>(
       '/web/v1/user/auth/generate_cred_by_code',
       {
@@ -60,7 +60,7 @@ export function createClient(config: ClientConfig = {}): Client {
     const cred = await storage.getItem(STORAGE_CREDENTIAL_KEY)
     assert(cred, '【skland-kit】cred 未获取')
 
-    const did = await getDid()
+    const did = await getDid(storage)
 
     const data = await $fetch<SklandResponse<{ token: string }>>(
       `/web/v1/auth/refresh`,

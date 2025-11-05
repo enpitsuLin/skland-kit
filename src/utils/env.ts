@@ -1,4 +1,6 @@
+import type { Storage } from 'unstorage'
 import { format } from 'date-fns'
+import { STORAGE_DID_KEY } from '../constants'
 import { encryptAES, encryptObjectByDESRules, encryptRSA, md5 } from './crypto'
 
 /**
@@ -254,7 +256,13 @@ export function getTn(o: Record<string, any>): string {
 const SM_CONFIG = SKLAND_SM_CONFIG
 const devices_info_url = `${SKLAND_SM_CONFIG.protocol}://${SKLAND_SM_CONFIG.apiHost}${SKLAND_SM_CONFIG.apiPath}`
 
-export async function getDid(): Promise<string> {
+export async function getDid(storage: Storage<string>): Promise<string> {
+  if (await storage.hasItem(STORAGE_DID_KEY)) {
+    const did = await storage.getItem(STORAGE_DID_KEY)
+    if (did)
+      return did
+  }
+
   // 生成 UUID 并计算 priId
   const uid = crypto.randomUUID()
   const priId = (await md5(uid)).substring(0, 16)
@@ -318,6 +326,7 @@ export async function getDid(): Promise<string> {
   })
 
   const resp = await response.json()
+  console.error(resp)
   if (resp.code !== 1100) {
     throw new Error('did计算失败，请联系作者')
   }

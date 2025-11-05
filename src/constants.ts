@@ -16,3 +16,8 @@ export const STORAGE_CREDENTIAL_KEY = 'skland:cred'
  * 森空岛用户 ID
  */
 export const STORAGE_USER_ID_KEY = 'skland:userId'
+
+/**
+ * 设备 ID
+ */
+export const STORAGE_DID_KEY = 'skland:did'
