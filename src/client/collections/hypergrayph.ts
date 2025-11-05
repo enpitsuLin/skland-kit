@@ -18,12 +18,12 @@ export function buildHypergryphCollection(): Hypergryph {
     const res = await $fetchHypergryph<HypergrayphonResponse<T>>(url, {
       ...options,
       onResponseError(ctx) {
-        throw new Error(`【skland-x】${errorMessage}`, { cause: ctx.response._data })
+        throw new Error(`【skland-kit】${errorMessage}`, { cause: ctx.response._data })
       },
     })
 
     if (res.status !== '0') {
-      throw new Error(`【skland-x】${errorMessage}`, { cause: res })
+      throw new Error(`【skland-kit】${errorMessage}`, { cause: res })
     }
 
     return res

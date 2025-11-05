@@ -1,6 +1,6 @@
-# skland-x
+# skland-kit
 
-[![npm version](https://img.shields.io/npm/v/skland-x.svg)](https://www.npmjs.com/package/skland-x)
+[![npm version](https://img.shields.io/npm/v/skland-kit.svg)](https://www.npmjs.com/package/skland-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D20.18.0-green.svg)](https://nodejs.org/)
 
@@ -9,7 +9,7 @@
 ## 安装
 
 ```bash
-pnpm add skland-x
+pnpm add skland-kit
 ```
 
 ## 快速开始
@@ -17,7 +17,7 @@ pnpm add skland-x
 创建客户端实例，然后就可以用了
 
 ```typescript
-import { createClient } from 'skland-x'
+import { createClient } from 'skland-kit'
 
 const client = createClient({
   baseURL: 'https://zonai.skland.com',

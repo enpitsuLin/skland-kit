@@ -58,7 +58,7 @@ export function createClient(config: ClientConfig = {}): Client {
 
   async function refresh() {
     const cred = await storage.getItem(STORAGE_CREDENTIAL_KEY)
-    assert(cred, '【skland-x】cred 未获取')
+    assert(cred, '【skland-kit】cred 未获取')
 
     const did = await getDid()
 

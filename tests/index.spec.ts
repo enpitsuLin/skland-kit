@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { createClient } from '../src'
 import { STORAGE_CREDENTIAL_KEY, STORAGE_OAUTH_TOKEN_KEY } from '../src/constants'
 
-describe('skland-x client', () => {
+describe('skland-kit client', () => {
   it('should have some properties', () => {
     const client = createClient()
     expect(client).toHaveProperty('$fetch')
@@ -48,7 +48,7 @@ describe('skland-x client', () => {
 
     await expect(client.collections.player.getBinding)
       .rejects
-      .toThrow('【skland-x】森空岛 cred 未获取')
+      .toThrow('【skland-kit】森空岛 cred 未获取')
   })
 
   it('should refresh token', async () => {

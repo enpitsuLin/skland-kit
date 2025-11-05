@@ -14,12 +14,12 @@ export function buildPlayerCollection(): ClientPlayer {
       ...options,
       onRequest: ctx => signRequest(ctx, storage),
       onResponseError(ctx) {
-        throw new Error(`【skland-x】${errorMessage}`, { cause: ctx.response._data })
+        throw new Error(`【skland-kit】${errorMessage}`, { cause: ctx.response._data })
       },
     })
 
     if (res.code !== 0) {
-      throw new Error(`【skland-x】${errorMessage}`, { cause: res })
+      throw new Error(`【skland-kit】${errorMessage}`, { cause: res })
     }
 
     return res

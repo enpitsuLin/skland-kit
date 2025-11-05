@@ -15,8 +15,8 @@ export async function signRequest(ctx: FetchContext, storage: Storage<string>): 
   const token = await storage.get(STORAGE_OAUTH_TOKEN_KEY)
   const cred = await storage.get(STORAGE_CREDENTIAL_KEY)
 
-  assert(cred, '【skland-x】森空岛 cred 未获取')
-  assert(token, '【skland-x】森空岛 token 未设置')
+  assert(cred, '【skland-kit】森空岛 cred 未获取')
+  assert(token, '【skland-kit】森空岛 token 未设置')
 
   const parsedURL = parseURL(ctx)
   const headers = new Headers(ctx.options.headers)
