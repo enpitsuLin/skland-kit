@@ -3,7 +3,7 @@ import { server } from './mocks/server'
 
 // Start server before all tests
 beforeAll(() => {
-  server.listen({ onUnhandledRequest: 'warn' })
+  server.listen({ onUnhandledRequest: 'bypass' })
 })
 
 // Reset handlers after each test
