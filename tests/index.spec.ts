@@ -75,7 +75,7 @@ describe('skland-kit client', () => {
     await client.signIn(res.code)
 
     const binding = await client.collections.player.getBinding()
- 
+
     expect(binding).toHaveProperty('list', expect.any(Array))
   })
 
@@ -87,8 +87,8 @@ describe('skland-kit client', () => {
     await client.signIn(res.code)
 
     const info = await client.collections.player.getInfo({ uid: import.meta.env.VITE_SKLAND_UID! })
-    
-    expect(info).toHaveProperty('currentTs') 
+
+    expect(info).toHaveProperty('currentTs')
   })
 
   it('should get attendance status', async () => {
@@ -99,7 +99,7 @@ describe('skland-kit client', () => {
     await client.signIn(res.code)
 
     const data = await client.collections.game.getAttendanceStatus({ uid: import.meta.env.VITE_SKLAND_UID!, gameId: '1' })
-    
+
     expect(data).toHaveProperty('currentTs')
     expect(data).toHaveProperty('calendar')
     expect(data).toHaveProperty('records')

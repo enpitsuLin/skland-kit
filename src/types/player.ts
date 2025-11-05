@@ -218,7 +218,6 @@ export interface AppBindingList {
   }[]
 }
 
-
 export interface PlayerInfo {
   showConfig: {
     charSwitch: boolean
