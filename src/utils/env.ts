@@ -326,7 +326,7 @@ export async function getDid(storage: Storage<string>): Promise<string> {
   })
 
   const resp = await response.json()
-  console.error(resp)
+
   if (resp.code !== 1100) {
     throw new Error('did计算失败，请联系作者')
   }
