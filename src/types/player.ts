@@ -213,7 +213,7 @@ export interface AppBindingList {
   list: {
     appCode: string
     appName: string
-    bindingList: []
+    bindingList: AppBindingPlayer[]
     defaultUid: string
   }[]
 }
